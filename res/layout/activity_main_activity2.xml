@@ -1,0 +1,90 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.softinus.axis.activities.MainActivity2" >
+
+    	<ImageView
+        android:id="@+id/mainmenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/mainmenu_bg"/>
+    
+   		<Button
+        android:id="@+id/btn_more"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/more"/>
+   
+      	<Button
+        android:id="@+id/btn_market"
+        android:layout_toRightOf="@+id/btn_more"
+        android:layout_marginLeft="35dp"
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_market"/>
+      
+       	<Button
+        android:id="@+id/btn_study"
+        android:layout_toRightOf="@+id/btn_market"
+        android:layout_marginLeft="35dp"
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_study"/>
+            
+        <Button
+        android:id="@+id/btn_record"
+        android:layout_toRightOf="@+id/btn_study"
+        android:layout_marginLeft="35dp"
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_record"/>
+        
+        <!-- 이 쪽에 추가작업 필요 -->
+<!--         <Button  -->
+<!--             android:id="@+id/btn_stduy_sub1" -->
+<!--             android:layout_below="@+id/btn_market" -->
+<!--             android:layout_width="wrap_content" -->
+<!--             android:layout_height="wrap_content" -->
+<!--             android:background="@drawable/"/> -->
+        
+        <ImageView
+        android:id="@+id/btn_search"
+        android:layout_toRightOf="@+id/btn_record"
+        android:layout_marginLeft="35dp"
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/search"/>
+        
+        <ImageView
+        android:id="@+id/btn_setting"
+        android:layout_toRightOf="@+id/btn_search"
+        android:layout_marginLeft="35dp"
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/setting"/>
+    
+    <ImageView
+        android:id="@+id/submenu"
+        android:layout_below="@+id/mainmenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/submenu_bg"/>
+    
+    <fragment
+        android:name="com.softinus.axis.fragments.FragmentStudy"
+        android:layout_below="@+id/submenu"
+        android:id="@+id/fragment_place"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+    
+    
+
+</RelativeLayout>
