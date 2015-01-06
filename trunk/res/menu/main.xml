@@ -1,0 +1,23 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.softinus.axis.MainActivity" >
+
+    <item
+        android:id="@+id/action_example"
+        android:showAsAction="withText|ifRoom"
+        android:title="마켓"/>
+   	<item
+        android:id="@+id/action_example1"
+        android:showAsAction="withText|ifRoom"
+        android:title="공부"/>
+    <item
+        android:id="@+id/action_example2"
+        android:showAsAction="withText|ifRoom"
+        android:title="기록"/>
+    <item
+        android:id="@+id/action_settings"
+        android:orderInCategory="100"
+        android:showAsAction="never"
+        android:title="@string/action_settings"/>
+
+</menu>

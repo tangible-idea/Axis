@@ -1,0 +1,112 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="${relativePackage}.${activityClass}"
+    android:background="#88000000">
+
+    <ImageView
+        android:layout_width="match_parent" 
+        android:layout_height="wrap_content"
+        android:src="@drawable/more_front_bg"
+        android:layout_marginLeft="-75dp"
+        />
+<!--     <ImageView  -->
+<!--         android:layout_width="wrap_content" -->
+<!--         android:layout_height="wrap_content" -->
+<!--         android:src="@drawable/"/> -->
+
+    <ImageView
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content"
+        android:src="@drawable/profile2"
+        android:layout_marginLeft="10dp"
+         android:layout_marginTop="60dp"></ImageView>
+        
+    <TextView
+        android:id="@+id/txt_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="softinus (Mark Choi)"
+        android:layout_marginLeft="75dp"
+        android:layout_marginTop="60dp"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        />
+    
+        <TextView
+        android:id="@+id/txt_lv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="LV99"
+        android:layout_below="@+id/txt_id"
+        android:layout_marginLeft="75dp"
+        android:layout_marginTop="10dp"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        />
+        
+        <ProgressBar
+            android:id="@+id/prg_exp"
+            android:layout_width="100dp"
+            android:layout_height="12dp"
+            android:progress="70"
+            style="@android:style/Widget.ProgressBar.Horizontal"
+            android:max="100"
+            android:layout_below="@+id/txt_id"
+            android:layout_toRightOf="@+id/txt_lv"
+            android:layout_marginTop="12dp"
+            android:layout_marginLeft="8dp"
+            />
+        
+        
+        <TextView
+        android:id="@+id/txt_label_entrance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="입장권"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="215dp"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        />
+        
+        <TextView
+        android:id="@+id/txt_label_entrance_free"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="무료 입장권"
+        android:layout_below="@+id/txt_label_entrance"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="10dp"
+        android:textColor="#444444"
+        android:textSize="14sp"
+        />
+        
+        <TextView
+        android:id="@+id/txt_label_entrance_paid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="유료 입장권"
+        android:layout_below="@+id/txt_label_entrance"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="30dp"
+        android:textColor="#444444"
+        android:textSize="14sp"
+        />
+        
+        <RatingBar
+            android:id="@+id/rtb_entrance_free"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_below="@+id/txt_label_entrance"
+            android:layout_toRightOf="@+id/txt_label_entrance_free"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:numStars="5"
+            android:rating="4"
+            android:isIndicator="true"
+            android:scaleX="0.2"
+            android:scaleY="0.2"/>
+
+</RelativeLayout>
