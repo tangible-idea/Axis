@@ -45,13 +45,7 @@
         android:layout_height="wrap_content"
         android:background="@drawable/button_record"/>
         
-        <!-- 이 쪽에 추가작업 필요 -->
-<!--         <Button  -->
-<!--             android:id="@+id/btn_stduy_sub1" -->
-<!--             android:layout_below="@+id/btn_market" -->
-<!--             android:layout_width="wrap_content" -->
-<!--             android:layout_height="wrap_content" -->
-<!--             android:background="@drawable/"/> -->
+
         
         <ImageView
         android:id="@+id/btn_search"
@@ -78,6 +72,67 @@
         android:layout_height="wrap_content"
         android:src="@drawable/submenu_bg"/>
     
+            <!-- 이 쪽에 추가작업 필요 -->
+        	<ToggleButton 
+            android:id="@+id/btn_study_sub1"
+            android:layout_below="@+id/btn_market"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_study_sub1"
+            android:layout_marginTop="30dp"
+            android:checked="true"
+            android:textOn=""
+            android:textOff=""
+            />
+        
+            <ToggleButton 
+            android:id="@+id/btn_study_sub2"
+            android:layout_below="@+id/btn_market"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_study_sub2"
+            android:layout_marginTop="30dp"
+            android:layout_toRightOf="@+id/btn_study_sub1"
+            android:textOn=""
+            android:textOff=""/>
+                
+            <ToggleButton 
+            android:id="@+id/btn_study_sub3"
+            android:layout_below="@+id/btn_market"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_study_sub3"
+            android:layout_marginTop="30dp"
+            android:layout_toRightOf="@+id/btn_study_sub2"
+            android:textOn=""
+            android:textOff=""/>
+            
+                        <!-- 이 쪽에 추가작업 필요 -->
+        	<ToggleButton 
+            android:id="@+id/btn_market_sub1"
+            android:layout_below="@+id/btn_market"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_market_sub1"
+            android:layout_marginTop="22dp"
+            android:checked="true"
+            android:textOn=""
+            android:textOff=""
+            android:visibility="gone"
+            />
+        
+            <ToggleButton 
+			android:id="@+id/btn_market_sub2"
+            android:layout_below="@+id/btn_market"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_market_sub2"
+            android:layout_marginTop="22dp"
+            android:layout_toRightOf="@+id/btn_market_sub1"
+            android:textOn=""
+            android:textOff=""
+            android:visibility="gone"/>
+            
     <fragment
         android:name="com.softinus.axis.fragments.FragmentStudy"
         android:layout_below="@+id/submenu"
