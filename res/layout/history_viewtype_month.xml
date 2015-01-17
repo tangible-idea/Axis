@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="100dp" >
+    
+    <View 
+        android:id="@+id/vertical_line"
+        android:layout_width="1dp"
+        android:layout_height="100dp"
+        android:layout_centerHorizontal="true"
+        android:background="#2886CA"/>
+    
+    <ImageView 
+        android:id="@+id/hexagon_month_bg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:src="@drawable/hexagon"/>
+
+    <TextView 
+        android:id="@+id/hexagon_month_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="1월"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        />
+</RelativeLayout>
