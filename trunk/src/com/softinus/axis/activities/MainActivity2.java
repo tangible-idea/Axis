@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ToggleButton;
 
+import com.softinus.axis.fragments.FragmentHistory;
 import com.softinus.axis.fragments.FragmentMarket;
 import com.softinus.axis.fragments.FragmentStudy;
 import com.softinus.axis.fragments.QuestionCollectionFragment;
@@ -142,6 +143,13 @@ public class MainActivity2 extends BaseAxisAcivity implements OnClickListener
 			
 			BTN_market_sub1.setVisibility(View.GONE);
 			BTN_market_sub2.setVisibility(View.GONE);
+			
+			Fragment fr;
+			fr= new FragmentHistory();
+			FragmentManager fm = getFragmentManager();
+			FragmentTransaction fragmentTransaction = fm.beginTransaction();
+			fragmentTransaction.replace(R.id.fragment_place, fr);
+			fragmentTransaction.commit();
 		}
 		
 		else if(v.getId() == R.id.btn_study_sub1)
