@@ -19,7 +19,9 @@ public class FragmentMarket extends ListFragment
 		 View rootView = inflater.inflate(R.layout.fragment_market, container,
 		            false);
 
-		    String[] values = new String[] { "Message1", "Message2", "Message3"};
+		    String[] values = new String[] { "문제1 구매", "문제2 구매", "문제3 구매",
+		    		"문제4 구매", "문제5 구매", "문제6 구매",
+		    		"문제7 구매", "문제8 구매", "문제9 구매"};
 		    ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
 		        android.R.layout.simple_list_item_1, values);
 		    setListAdapter(adapter);

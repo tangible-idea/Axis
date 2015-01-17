@@ -121,6 +121,17 @@ public class MainActivity2 extends BaseAxisAcivity implements OnClickListener
 			BTN_market_sub1.setVisibility(View.GONE);
 			BTN_market_sub2.setVisibility(View.GONE);
 			
+			BTN_study_sub1.setChecked(true);
+			BTN_study_sub2.setChecked(false);
+			BTN_study_sub3.setChecked(false);
+			
+			Fragment fr;
+			fr= new QuestionSingleFragment();
+			FragmentManager fm = getFragmentManager();
+			FragmentTransaction fragmentTransaction = fm.beginTransaction();
+			fragmentTransaction.replace(R.id.fragment_place, fr);
+			fragmentTransaction.commit();
+			
 
 		}
 		else if(v.getId() == R.id.btn_record)

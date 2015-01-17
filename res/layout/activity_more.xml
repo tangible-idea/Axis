@@ -38,7 +38,7 @@
         android:id="@+id/txt_lv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="LV99"
+        android:text="9학년"
         android:layout_below="@+id/txt_id"
         android:layout_marginLeft="75dp"
         android:layout_marginTop="10dp"
