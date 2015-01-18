@@ -19,7 +19,7 @@ public class FragmentHistory extends Fragment
 {
 	
     // 리스트뷰를 구성하는 리스트뷰와 어댑터 변수
-    private ExamAdapter m_adapter = null;
+    private HistoryAdapter m_adapter = null;
     private ListView m_list = null;
 	
 	@Override
@@ -33,7 +33,7 @@ public class FragmentHistory extends Fragment
 		// ExamData 객체를 관리하는 ArrayList 객체를 생성한다.
         ArrayList<AxisHistory> data_list = new ArrayList<AxisHistory>();
         // 사용자 정의 어댑터 객체를 생성한다.
-        m_adapter = new ExamAdapter(data_list);
+        m_adapter = new HistoryAdapter(data_list);
         
         // 리스트를 얻어서 어댑터를 설정한다.
         m_list= (ListView) rootview.findViewById(R.id.list_history);
@@ -70,13 +70,13 @@ public class FragmentHistory extends Fragment
 	}
 	
 	// BaseAdapter 를 상속하여 어댑터 클래스를 재정의한다.
-    private class ExamAdapter extends BaseAdapter 
+    private class HistoryAdapter extends BaseAdapter 
     {
         private LayoutInflater m_inflater = null;
         // ExamData 객체를 관리하는 ArrayList
         private ArrayList<AxisHistory> m_data_list;
         
-        public ExamAdapter(ArrayList<AxisHistory> items)
+        public HistoryAdapter(ArrayList<AxisHistory> items)
         {
             m_data_list = items;    
             // 인플레이터를 얻는다.
