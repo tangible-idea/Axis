@@ -9,6 +9,7 @@ import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -24,52 +25,49 @@ import com.softinus.axis.data.QuestionData;
 import com.softinus.axis.data.QuestionStorage;
 import com.softinus.axis.util.Global;
 import com.softinus.axis.util.SPUtil;
-import com.softinus.axis.util.Utilities;
 
-public class FragmentMarket extends Fragment
+public class FragmentSelectQuestion extends Fragment
 {
     // 리스트뷰를 구성하는 리스트뷰와 어댑터 변수
-    private MarketAdapter m_adapter = null;
+    private QuestionSelAdapter m_adapter = null;
     private ListView m_list = null;
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState)
 	{
-		// TODO Auto-generated method stub
-		View rootview= inflater.inflate(R.layout.fragment_market, container, false);
+	
+		View rootview= inflater.inflate(R.layout.fragment_select_question, container, false);
 		
 		// ExamData 객체를 관리하는 ArrayList 객체를 생성한다.
         ArrayList<QuestionData> data_list = new ArrayList<QuestionData>();
         // 사용자 정의 어댑터 객체를 생성한다.
-        m_adapter = new MarketAdapter(data_list);
+        m_adapter = new QuestionSelAdapter(data_list);
         
         // 리스트를 얻어서 어댑터를 설정한다.
-        m_list= (ListView) rootview.findViewById(R.id.list_market);
+        m_list= (ListView) rootview.findViewById(R.id.list_selectquestion);
         m_list.setAdapter(m_adapter);
     
-        for(int i=0; i<QuestionStorage.arrQList.size(); ++i)
+        for(int i=0; i<QuestionStorage.arrQList.size(); ++i)	// 전체 문제 목록 돌면서
         {
         	QuestionData QD= QuestionStorage.arrQList.get(i);
         	
-        	if( SPUtil.getBoolean(getActivity(), Global.s_strPrefix_Buy+Integer.toString(i)) == false )
+        	if( SPUtil.getBoolean(getActivity(), Global.s_strPrefix_Buy+Integer.toString(i)) == true )
         		m_adapter.add(QD);
         }
 	
 		return rootview;
 	}
 	
-	
-	
 
 	// BaseAdapter 를 상속하여 어댑터 클래스를 재정의한다.
-    private class MarketAdapter extends BaseAdapter 
+    private class QuestionSelAdapter extends BaseAdapter 
     {
         private LayoutInflater m_inflater = null;
         // ExamData 객체를 관리하는 ArrayList
         private ArrayList<QuestionData> m_data_list;
         
-        public MarketAdapter(ArrayList<QuestionData> items)
+        public QuestionSelAdapter(ArrayList<QuestionData> items)
         {
             m_data_list = items;    
             // 인플레이터를 얻는다.
@@ -115,7 +113,7 @@ public class FragmentMarket extends Fragment
             // null 이 넘어오는 경우에만 새로 생성하고, 그렇지않은 경우에는 그대로 사용한다.
             if(convertView == null)
             {
-            	view = m_inflater.inflate(R.layout.market_listview_question , null); 
+            	view = m_inflater.inflate(R.layout.question_listview_select , null); 
             } else {
                 view = convertView;
             }
@@ -125,9 +123,9 @@ public class FragmentMarket extends Fragment
             if(data != null)
             {
             	TextView TXT_content= (TextView) view.findViewById(R.id.txt_question_content);
-            	TextView TXT_exp= (TextView) view.findViewById(R.id.txt_exp);
+            	TextView TXT_solved= (TextView) view.findViewById(R.id.txt_solved);
             	ImageView IMG_difficult= (ImageView) view.findViewById(R.id.img_difficult);
-            	Button BTN_buy= (Button) view.findViewById(R.id.btn_buy);
+            	Button BTN_play= (Button) view.findViewById(R.id.btn_play);
             	
             	final TextView TXT_state= (TextView) view.findViewById(R.id.txt_state);
             	final View V_state= view.findViewById(R.id.bg_check);
@@ -144,24 +142,27 @@ public class FragmentMarket extends Fragment
             	}
             		
             	
-            	BTN_buy.setOnClickListener(new OnClickListener()
+            	BTN_play.setOnClickListener(new OnClickListener()
             	{
 					@Override
 					public void onClick(View v)
 					{
 						new AlertDialog.Builder(getActivity())
-				        .setTitle("문제 구매")
-				        .setMessage( data.nCode+"번 문제를 구매하시겠습니까?"
+				        .setTitle("문제 풀기")
+				        .setMessage( data.nCode+"번 문제를 푸시겠습니까?"
 				        		)
 				        .setPositiveButton("YES", new DialogInterface.OnClickListener()
 				        {
 				            public void onClick(DialogInterface dialog, int whichButton)
 				            {
-				            	Utilities.WriteAxisLog(getActivity(), "history.txt", "buy", data.nCode);
-				            	SPUtil.putBoolean(getActivity(), Global.s_strPrefix_Buy+String.valueOf( data.nCode ), true);	// 구매 완료
-				            	TXT_state.setVisibility(View.VISIBLE);
-				            	V_state.setVisibility(View.VISIBLE);
+				            	Global.s_nCurrQuestion= data.nCode;	 // 현재 풀고 있는 번호 넘기고 문제 푸는 페이지로 넘김.
 				            	
+				    			Fragment fr;
+				    			fr= new FragmentQuestionSingle();
+				    			FragmentManager fm = getFragmentManager();
+				    			FragmentTransaction fragmentTransaction = fm.beginTransaction();
+				    			fragmentTransaction.replace(R.id.fragment_place, fr);
+				    			fragmentTransaction.commit();
 				            }
 				        })
 				        .setNegativeButton("NO", new DialogInterface.OnClickListener()
@@ -175,7 +176,18 @@ public class FragmentMarket extends Fragment
 				});
             	
             	TXT_content.setText(data.strQuestion);
-            	TXT_exp.setText("exp : "+String.valueOf(data.nExp));
+            	
+            	Log.d("LOG:::::::::::::::Load listview", Global.s_strPrefix_Solved+ data.nCode );
+            	// 해당 문제가 풀렸으면...
+            	if( SPUtil.getBoolean(getActivity(), Global.s_strPrefix_Solved+ data.nCode ) == true )
+            	{
+            		TXT_solved.setText("완료");
+            	}
+            	else
+            	{
+            		TXT_solved.setText("미완료");	
+            	}
+            	
             	
             	switch(data.nDifficult)
             	{

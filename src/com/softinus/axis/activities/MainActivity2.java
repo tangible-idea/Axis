@@ -19,9 +19,11 @@ import com.softinus.axis.data.QuestionData;
 import com.softinus.axis.data.QuestionStorage;
 import com.softinus.axis.fragments.FragmentHistory;
 import com.softinus.axis.fragments.FragmentMarket;
+import com.softinus.axis.fragments.FragmentSelectQuestion;
 import com.softinus.axis.fragments.FragmentStudy;
-import com.softinus.axis.fragments.QuestionCollectionFragment;
-import com.softinus.axis.fragments.QuestionSingleFragment;
+import com.softinus.axis.fragments.FragmentQuestionCollection;
+import com.softinus.axis.fragments.FragmentQuestionSingle;
+import com.softinus.axis.util.SPUtil;
 
 public class MainActivity2 extends BaseAxisAcivity implements OnClickListener
 {
@@ -87,6 +89,8 @@ public class MainActivity2 extends BaseAxisAcivity implements OnClickListener
 	        QuestionStorage.arrQList.add(new QuestionData(13, new Date(), "hello", 3, 120, "2x2", "2x2", "4", "", ""));
 	        QuestionStorage.arrQList.add(new QuestionData(14, new Date(), "hello", 3, 120, "3x3", "3x3", "9", "", ""));
 	        QuestionStorage.arrQList.add(new QuestionData(15, new Date(), "hello", 3, 120, "4x4", "4x4", "16", "", ""));
+	        
+	       
 		}
 	}
 
@@ -151,7 +155,7 @@ public class MainActivity2 extends BaseAxisAcivity implements OnClickListener
 			BTN_study_sub3.setChecked(false);
 			
 			Fragment fr;
-			fr= new QuestionSingleFragment();
+			fr= new FragmentSelectQuestion();
 			FragmentManager fm = getFragmentManager();
 			FragmentTransaction fragmentTransaction = fm.beginTransaction();
 			fragmentTransaction.replace(R.id.fragment_place, fr);
@@ -183,7 +187,7 @@ public class MainActivity2 extends BaseAxisAcivity implements OnClickListener
 			BTN_study_sub3.setChecked(false);
 			
 			Fragment fr;
-			fr= new QuestionSingleFragment();
+			fr= new FragmentSelectQuestion();
 			FragmentManager fm = getFragmentManager();
 			FragmentTransaction fragmentTransaction = fm.beginTransaction();
 			fragmentTransaction.replace(R.id.fragment_place, fr);
@@ -196,7 +200,7 @@ public class MainActivity2 extends BaseAxisAcivity implements OnClickListener
 			BTN_study_sub3.setChecked(false);
 			
 			Fragment fr;
-			fr= new QuestionCollectionFragment();
+			fr= new FragmentQuestionCollection();
 			FragmentManager fm = getFragmentManager();
 			FragmentTransaction fragmentTransaction = fm.beginTransaction();
 			fragmentTransaction.replace(R.id.fragment_place, fr);
