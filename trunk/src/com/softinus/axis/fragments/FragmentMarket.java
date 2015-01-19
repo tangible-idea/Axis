@@ -1,21 +1,26 @@
 package com.softinus.axis.fragments;
 
 import java.util.ArrayList;
-import java.util.Date;
 
+import android.app.AlertDialog;
 import android.app.Fragment;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.softinus.axis.activities.R;
 import com.softinus.axis.data.QuestionData;
+import com.softinus.axis.data.QuestionStorage;
+import com.softinus.axis.util.SPUtil;
 
 public class FragmentMarket extends Fragment
 {
@@ -38,24 +43,14 @@ public class FragmentMarket extends Fragment
         // 리스트를 얻어서 어댑터를 설정한다.
         m_list= (ListView) rootview.findViewById(R.id.list_history);
         m_list.setAdapter(m_adapter);
-        
-       m_adapter.add(new QuestionData(1, new Date(), "hello", 1, 100, "1+1", "1+1", "2", "", ""));
-       m_adapter.add(new QuestionData(2, new Date(), "hello", 1, 100, "1+2", "1+2", "3", "", ""));
-       m_adapter.add(new QuestionData(3, new Date(), "hello", 1, 100, "2+2", "2+2", "4", "", ""));
-       m_adapter.add(new QuestionData(4, new Date(), "hello", 1, 100, "3+3", "3+3", "6", "", ""));
-       m_adapter.add(new QuestionData(5, new Date(), "hello", 1, 100, "4+4", "4+4", "8", "", ""));
-
-       m_adapter.add(new QuestionData(6, new Date(), "hello", 2, 110, "1-1", "1-1", "0", "", ""));
-       m_adapter.add(new QuestionData(7, new Date(), "hello", 2, 110, "2-2", "2-2", "0", "", ""));
-       m_adapter.add(new QuestionData(8, new Date(), "hello", 2, 110, "2-2", "2-2", "0", "", ""));
-       m_adapter.add(new QuestionData(9, new Date(), "hello", 2, 110, "3-3", "3-3", "0", "", ""));
-       m_adapter.add(new QuestionData(10, new Date(), "hello", 2, 110, "4-4", "4-4", "0", "", ""));
-       
-       m_adapter.add(new QuestionData(11, new Date(), "hello", 3, 120, "1x1", "1x1", "1", "", ""));
-       m_adapter.add(new QuestionData(12, new Date(), "hello", 3, 120, "1x2", "1x2", "2", "", ""));
-       m_adapter.add(new QuestionData(13, new Date(), "hello", 3, 120, "2x2", "2x2", "4", "", ""));
-       m_adapter.add(new QuestionData(14, new Date(), "hello", 3, 120, "3x3", "3x3", "9", "", ""));
-       m_adapter.add(new QuestionData(15, new Date(), "hello", 3, 120, "4x4", "4x4", "16", "", ""));
+    
+        for(int i=0; i<QuestionStorage.arrQList.size(); ++i)
+        {
+        	QuestionData QD= QuestionStorage.arrQList.get(i);
+        	
+        	if( SPUtil.getBoolean(getActivity(), Integer.toString(i)) == false )
+        		m_adapter.add(QD);
+        }
 	
 		return rootview;
 	}
@@ -108,7 +103,7 @@ public class FragmentMarket extends Fragment
         
 
         // 각 항목에 출력될 뷰를 구성하여 반환하는 메서드
-        public View getView(int position, View convertView, ViewGroup parent)
+        public View getView(final int position, View convertView, ViewGroup parent)
         {
             View view = null;
             
@@ -128,6 +123,51 @@ public class FragmentMarket extends Fragment
             	TextView TXT_content= (TextView) view.findViewById(R.id.txt_question_content);
             	TextView TXT_exp= (TextView) view.findViewById(R.id.txt_exp);
             	ImageView IMG_difficult= (ImageView) view.findViewById(R.id.img_difficult);
+            	Button BTN_buy= (Button) view.findViewById(R.id.btn_buy);
+            	
+            	final TextView TXT_state= (TextView) view.findViewById(R.id.txt_state);
+            	final View V_state= view.findViewById(R.id.bg_check);
+            	
+            	if(SPUtil.getBoolean(getActivity(), String.valueOf(position))==true)
+            	{
+            		TXT_state.setVisibility(View.VISIBLE);
+	            	V_state.setVisibility(View.VISIBLE);
+            	}
+            	else
+            	{
+            		TXT_state.setVisibility(View.INVISIBLE);
+	            	V_state.setVisibility(View.INVISIBLE);
+            	}
+            		
+            	
+            	BTN_buy.setOnClickListener(new OnClickListener()
+            	{
+					
+					@Override
+					public void onClick(View v)
+					{
+						new AlertDialog.Builder(getActivity())
+				        .setTitle("문제 구매")
+				        .setMessage( position+"번 문제를 구매하시겠습니까?"
+				        		)
+				        .setPositiveButton("YES", new DialogInterface.OnClickListener()
+				        {
+				            public void onClick(DialogInterface dialog, int whichButton)
+				            {
+				            	SPUtil.putBoolean(getActivity(), String.valueOf(position), true);
+				            	TXT_state.setVisibility(View.VISIBLE);
+				            	V_state.setVisibility(View.VISIBLE);
+				            }
+				        })
+				        .setNegativeButton("NO", new DialogInterface.OnClickListener()
+				        {
+				        	public void onClick(DialogInterface dialog, int whichButton)
+				            {
+				            }
+				        })
+				        .show();
+					}
+				});
             	
             	TXT_content.setText(data.strQuestion);
             	TXT_exp.setText("exp : "+String.valueOf(data.nExp));
