@@ -62,7 +62,14 @@ public class FragmentHistory extends Fragment
         	String strNote= ST_blank.nextToken();
         	
 			SimpleDateFormat SDF_Format = new SimpleDateFormat("yyyy:MM:dd:HH:mm");						// 시간 포맷 지정
-			try {
+			StringTokenizer ST_date= new StringTokenizer(strDate, ":");
+			String strYear= ST_date.nextToken();
+			String strMonth= ST_date.nextToken();
+			String strDay= ST_date.nextToken();
+			String strHours= ST_date.nextToken();
+			String strMinutes= ST_date.nextToken();
+			try
+			{
 				Date parsed= SDF_Format.parse(strDate);
 				
 				if(nCurrMonth != parsed.getMonth())	// 월이 바뀌엇으면
@@ -71,12 +78,18 @@ public class FragmentHistory extends Fragment
 					nCurrMonth = parsed.getMonth();
 				}
 				
-				if(nCurrDate != parsed.getDate())	// 월이 바뀌엇으면
+				if(nCurrDate != parsed.getDate())	// 일이 바뀌엇으면
 				{
 					if(parsed.getDate() % 2 == 0) // 짝수일이면
+					{
 						m_adapter.add(new AxisHistory(1, 1, parsed.getDate()+"일"));
+						m_adapter.add(new AxisHistory(2, 1, "시스템 : 접속["+ strHours +":"+strMinutes+"]"));
+					}
 					else
+					{
 						m_adapter.add(new AxisHistory(1, 2, parsed.getDate()+"일"));
+						m_adapter.add(new AxisHistory(2, 2, "시스템 : 접속["+ strHours +":"+strMinutes+"]"));
+					}
 					
 					nCurrDate= parsed.getDate();
 				}
@@ -92,7 +105,7 @@ public class FragmentHistory extends Fragment
 				}
 				else if(strAction.equals("online"))
 				{
-					strBuf += "시스템 : 접속 (" + parsed.getHours() + parsed.getMinutes() +")";
+					strBuf += "시스템 : 접속 (" + strHours + strMinutes +")";
 				}
 				else if(strAction.equals("join"))
 				{
