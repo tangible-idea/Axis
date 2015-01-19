@@ -1,5 +1,7 @@
 package com.softinus.axis.activities;
 
+import java.util.Date;
+
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
@@ -13,6 +15,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ToggleButton;
 
+import com.softinus.axis.data.QuestionData;
+import com.softinus.axis.data.QuestionStorage;
 import com.softinus.axis.fragments.FragmentHistory;
 import com.softinus.axis.fragments.FragmentMarket;
 import com.softinus.axis.fragments.FragmentStudy;
@@ -64,6 +68,26 @@ public class MainActivity2 extends BaseAxisAcivity implements OnClickListener
 	protected void onStart()
 	{
 		super.onStart();
+		
+		{
+	        QuestionStorage.arrQList.add(new QuestionData(1, new Date(), "hello", 1, 100, "1+1", "1+1", "2", "", ""));
+	        QuestionStorage.arrQList.add(new QuestionData(2, new Date(), "hello", 1, 100, "1+2", "1+2", "3", "", ""));
+	        QuestionStorage.arrQList.add(new QuestionData(3, new Date(), "hello", 1, 100, "2+2", "2+2", "4", "", ""));
+	        QuestionStorage.arrQList.add(new QuestionData(4, new Date(), "hello", 1, 100, "3+3", "3+3", "6", "", ""));
+	        QuestionStorage.arrQList.add(new QuestionData(5, new Date(), "hello", 1, 100, "4+4", "4+4", "8", "", ""));
+
+	        QuestionStorage.arrQList.add(new QuestionData(6, new Date(), "hello", 2, 110, "1-1", "1-1", "0", "", ""));
+	        QuestionStorage.arrQList.add(new QuestionData(7, new Date(), "hello", 2, 110, "2-2", "2-2", "0", "", ""));
+	        QuestionStorage.arrQList.add(new QuestionData(8, new Date(), "hello", 2, 110, "2-2", "2-2", "0", "", ""));
+	        QuestionStorage.arrQList.add(new QuestionData(9, new Date(), "hello", 2, 110, "3-3", "3-3", "0", "", ""));
+	        QuestionStorage.arrQList.add(new QuestionData(10, new Date(), "hello", 2, 110, "4-4", "4-4", "0", "", ""));
+	       
+	        QuestionStorage.arrQList.add(new QuestionData(11, new Date(), "hello", 3, 120, "1x1", "1x1", "1", "", ""));
+	        QuestionStorage.arrQList.add(new QuestionData(12, new Date(), "hello", 3, 120, "1x2", "1x2", "2", "", ""));
+	        QuestionStorage.arrQList.add(new QuestionData(13, new Date(), "hello", 3, 120, "2x2", "2x2", "4", "", ""));
+	        QuestionStorage.arrQList.add(new QuestionData(14, new Date(), "hello", 3, 120, "3x3", "3x3", "9", "", ""));
+	        QuestionStorage.arrQList.add(new QuestionData(15, new Date(), "hello", 3, 120, "4x4", "4x4", "16", "", ""));
+		}
 	}
 
 	@Override

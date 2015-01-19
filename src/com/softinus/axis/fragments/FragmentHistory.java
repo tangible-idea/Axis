@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.softinus.axis.activities.R;
 import com.softinus.axis.data.AxisHistory;
+import com.softinus.axis.util.Utilities;
 
 public class FragmentHistory extends Fragment
 {
@@ -25,9 +26,7 @@ public class FragmentHistory extends Fragment
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState)
-	{
-	
-		
+	{	
 		View rootview= inflater.inflate(R.layout.fragment_history, container, false);
 		
 		// ExamData 객체를 관리하는 ArrayList 객체를 생성한다.

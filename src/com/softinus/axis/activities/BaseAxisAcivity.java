@@ -12,7 +12,13 @@ public class BaseAxisAcivity extends Activity
 	@Override
 	public void setContentView(int layoutResID)
 	{	
-		super.setContentView(layoutResID);
+		try
+		{
+			super.setContentView(layoutResID);
+		}catch(Exception e)
+		{
+			
+		}
 
 		if (mTypeface == null)
 		{
