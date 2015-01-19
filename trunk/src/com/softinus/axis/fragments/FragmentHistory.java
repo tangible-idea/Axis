@@ -1,10 +1,15 @@
 package com.softinus.axis.fragments;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.StringTokenizer;
 
 import android.app.Fragment;
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,31 +43,101 @@ public class FragmentHistory extends Fragment
         m_list= (ListView) rootview.findViewById(R.id.list_history);
         m_list.setAdapter(m_adapter);
         
-       m_adapter.add(new AxisHistory(0, 0, "1월"));
+        
+        
+        
+        String txt= Utilities.ReadTextFile(getActivity(), "history.txt");
+        StringTokenizer ST_line = new StringTokenizer(txt, "\r\n");
+        
+        int nCurrMonth= -1;
+        int nCurrDate= -1;
+        
+        while(ST_line.hasMoreTokens())
+        {
+        	String strLine= ST_line.nextToken();
+        	
+        	StringTokenizer ST_blank = new StringTokenizer(strLine, " ");
+        	String strDate= ST_blank.nextToken();
+        	String strAction= ST_blank.nextToken();
+        	String strNote= ST_blank.nextToken();
+        	
+			SimpleDateFormat SDF_Format = new SimpleDateFormat("yyyy:MM:dd:HH:mm");						// 시간 포맷 지정
+			try {
+				Date parsed= SDF_Format.parse(strDate);
+				
+				if(nCurrMonth != parsed.getMonth())	// 월이 바뀌엇으면
+				{
+					m_adapter.add(new AxisHistory(0, 0, 1+parsed.getMonth()+"월"));
+					nCurrMonth = parsed.getMonth();
+				}
+				
+				if(nCurrDate != parsed.getDate())	// 월이 바뀌엇으면
+				{
+					if(parsed.getDate() % 2 == 0) // 짝수일이면
+						m_adapter.add(new AxisHistory(1, 1, parsed.getDate()+"일"));
+					else
+						m_adapter.add(new AxisHistory(1, 2, parsed.getDate()+"일"));
+					
+					nCurrDate= parsed.getDate();
+				}
+				
+				String strBuf= "";
+				if(strAction.equals("solved"))
+				{
+					strBuf += "학습 : 문제풀이";
+				}
+				else if(strAction.equals("buy"))
+				{
+					strBuf += "마켓 : 문제구입";
+				}
+				else if(strAction.equals("online"))
+				{
+					strBuf += "시스템 : 접속 (" + parsed.getHours() + parsed.getMinutes() +")";
+				}
+				else if(strAction.equals("join"))
+				{
+					strBuf += "시스템 : 회원가입";
+				}
+				// 노트 적기
+				if(parsed.getDate() % 2 == 0) // 짝수일이면
+					 m_adapter.add(new AxisHistory(2, 1, strBuf));
+				else
+					 m_adapter.add(new AxisHistory(2, 2, strBuf));
+				
+				
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+        }
+        
+        
        
-       m_adapter.add(new AxisHistory(1, 1, "1일"));
-       m_adapter.add(new AxisHistory(2, 1, "우와왐ㄴ어ㅣㅁㅇ"));
-       m_adapter.add(new AxisHistory(2, 1, "우와왐ㄴ어ㅣㅁㅇ"));
-       m_adapter.add(new AxisHistory(2, 1, "우와왐ㄴ어ㅣㅁㅇ"));
+//       m_adapter.add(new AxisHistory(1, 1, "1일"));
+//       m_adapter.add(new AxisHistory(2, 1, "우와왐ㄴ어ㅣㅁㅇ"));
+//       m_adapter.add(new AxisHistory(2, 1, "우와왐ㄴ어ㅣㅁㅇ"));
+//       m_adapter.add(new AxisHistory(2, 1, "우와왐ㄴ어ㅣㅁㅇ"));
+//       
+//       m_adapter.add(new AxisHistory(1, 2, "2일"));
+//       m_adapter.add(new AxisHistory(2, 2, "우와왐ㄴ어ㅣㅁㅇ"));
+//       m_adapter.add(new AxisHistory(2, 2, "우와왐ㄴ어ㅣㅁㅇ"));
+//       m_adapter.add(new AxisHistory(2, 2, "우와왐ㄴ어ㅣㅁㅇ"));
+//       m_adapter.add(new AxisHistory(2, 2, "우와왐ㄴ어ㅣㅁㅇ"));
+//       
+//       m_adapter.add(new AxisHistory(1, 1, "3일"));
+//       m_adapter.add(new AxisHistory(2, 1, "우와왐ㄴ어ㅣㅁㅇ"));
+//       m_adapter.add(new AxisHistory(2, 1, "우와왐ㄴ어ㅣㅁㅇ"));
+//       m_adapter.add(new AxisHistory(2, 1, "우와왐ㄴ어ㅣㅁㅇ"));
+//       m_adapter.add(new AxisHistory(2, 1, "우와왐ㄴ어ㅣㅁㅇ"));
+//       m_adapter.add(new AxisHistory(2, 1, "우와왐ㄴ어ㅣㅁㅇ"));
+//       m_adapter.add(new AxisHistory(2, 1, "우와왐ㄴ어ㅣㅁㅇ"));
+//       m_adapter.add(new AxisHistory(2, 1, "우와왐ㄴ어ㅣㅁㅇ"));
+//       
+//       m_adapter.add(new AxisHistory(1, 2, "4일"));
+//       m_adapter.add(new AxisHistory(2, 2, "우와왐ㄴ어ㅣㅁㅇ"));
+//       m_adapter.add(new AxisHistory(2, 2, "우와왐ㄴ어ㅣㅁㅇ"));
        
-       m_adapter.add(new AxisHistory(1, 2, "2일"));
-       m_adapter.add(new AxisHistory(2, 2, "우와왐ㄴ어ㅣㅁㅇ"));
-       m_adapter.add(new AxisHistory(2, 2, "우와왐ㄴ어ㅣㅁㅇ"));
-       m_adapter.add(new AxisHistory(2, 2, "우와왐ㄴ어ㅣㅁㅇ"));
-       m_adapter.add(new AxisHistory(2, 2, "우와왐ㄴ어ㅣㅁㅇ"));
        
-       m_adapter.add(new AxisHistory(1, 1, "3일"));
-       m_adapter.add(new AxisHistory(2, 1, "우와왐ㄴ어ㅣㅁㅇ"));
-       m_adapter.add(new AxisHistory(2, 1, "우와왐ㄴ어ㅣㅁㅇ"));
-       m_adapter.add(new AxisHistory(2, 1, "우와왐ㄴ어ㅣㅁㅇ"));
-       m_adapter.add(new AxisHistory(2, 1, "우와왐ㄴ어ㅣㅁㅇ"));
-       m_adapter.add(new AxisHistory(2, 1, "우와왐ㄴ어ㅣㅁㅇ"));
-       m_adapter.add(new AxisHistory(2, 1, "우와왐ㄴ어ㅣㅁㅇ"));
-       m_adapter.add(new AxisHistory(2, 1, "우와왐ㄴ어ㅣㅁㅇ"));
-       
-       m_adapter.add(new AxisHistory(1, 2, "4일"));
-       m_adapter.add(new AxisHistory(2, 2, "우와왐ㄴ어ㅣㅁㅇ"));
-       m_adapter.add(new AxisHistory(2, 2, "우와왐ㄴ어ㅣㅁㅇ"));
        
 		
 		return rootview;

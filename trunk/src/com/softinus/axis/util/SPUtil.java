@@ -6,6 +6,7 @@ import android.preference.PreferenceManager;
 
 public class SPUtil
 {
+		
         public static void putString(Context context, String key, String value)
         {
                 SharedPreferences prefs = 
@@ -16,7 +17,6 @@ public class SPUtil
                 editor.putString(key, value);
                 editor.commit();
         }
-        
 
 
 		public static void putBoolean(Context context, String key, boolean b)

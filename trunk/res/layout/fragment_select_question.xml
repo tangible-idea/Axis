@@ -12,7 +12,7 @@
 <!--         android:text="test"/> -->
     
     <ListView
-        android:id="@+id/list_market"
+        android:id="@+id/list_selectquestion"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:divider="#00000000">

@@ -23,10 +23,10 @@
         android:layout_centerVertical="true"/>
     
     <TextView
-        android:id="@+id/txt_exp"
+        android:id="@+id/txt_solved"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="경험치"
+        android:text=""
         android:textSize="14sp"
         android:textColor="#ff0000"
         android:layout_toRightOf="@+id/txt_question_content"
@@ -34,10 +34,10 @@
         android:layout_centerVertical="true"/>
     
     <Button 
-        android:id="@+id/btn_buy"
+        android:id="@+id/btn_play"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="BUY"
+        android:text="PLAY"
         android:layout_alignParentRight="true"
         android:layout_marginRight="10dp"
         android:layout_centerVertical="true"
@@ -59,7 +59,7 @@
         android:id="@+id/txt_state"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="구매 완료"
+        android:text="풀었음"
         android:textSize="24sp"
         android:textAlignment="center"
         android:textColor="#000000"
