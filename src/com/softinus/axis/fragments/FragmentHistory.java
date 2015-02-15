@@ -126,30 +126,6 @@ public class FragmentHistory extends Fragment
         
         
        
-//       m_adapter.add(new AxisHistory(1, 1, "1일"));
-//       m_adapter.add(new AxisHistory(2, 1, "우와왐ㄴ어ㅣㅁㅇ"));
-//       m_adapter.add(new AxisHistory(2, 1, "우와왐ㄴ어ㅣㅁㅇ"));
-//       m_adapter.add(new AxisHistory(2, 1, "우와왐ㄴ어ㅣㅁㅇ"));
-//       
-//       m_adapter.add(new AxisHistory(1, 2, "2일"));
-//       m_adapter.add(new AxisHistory(2, 2, "우와왐ㄴ어ㅣㅁㅇ"));
-//       m_adapter.add(new AxisHistory(2, 2, "우와왐ㄴ어ㅣㅁㅇ"));
-//       m_adapter.add(new AxisHistory(2, 2, "우와왐ㄴ어ㅣㅁㅇ"));
-//       m_adapter.add(new AxisHistory(2, 2, "우와왐ㄴ어ㅣㅁㅇ"));
-//       
-//       m_adapter.add(new AxisHistory(1, 1, "3일"));
-//       m_adapter.add(new AxisHistory(2, 1, "우와왐ㄴ어ㅣㅁㅇ"));
-//       m_adapter.add(new AxisHistory(2, 1, "우와왐ㄴ어ㅣㅁㅇ"));
-//       m_adapter.add(new AxisHistory(2, 1, "우와왐ㄴ어ㅣㅁㅇ"));
-//       m_adapter.add(new AxisHistory(2, 1, "우와왐ㄴ어ㅣㅁㅇ"));
-//       m_adapter.add(new AxisHistory(2, 1, "우와왐ㄴ어ㅣㅁㅇ"));
-//       m_adapter.add(new AxisHistory(2, 1, "우와왐ㄴ어ㅣㅁㅇ"));
-//       m_adapter.add(new AxisHistory(2, 1, "우와왐ㄴ어ㅣㅁㅇ"));
-//       
-//       m_adapter.add(new AxisHistory(1, 2, "4일"));
-//       m_adapter.add(new AxisHistory(2, 2, "우와왐ㄴ어ㅣㅁㅇ"));
-//       m_adapter.add(new AxisHistory(2, 2, "우와왐ㄴ어ㅣㅁㅇ"));
-       
        
        
 		
