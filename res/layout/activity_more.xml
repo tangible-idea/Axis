@@ -16,6 +16,14 @@
 <!--         android:layout_height="wrap_content" -->
 <!--         android:src="@drawable/"/> -->
 
+   		<Button
+        android:id="@+id/btn_more"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="0dp"
+        android:background="@drawable/button_more"/>
+
     <ImageView
         android:layout_width="wrap_content" 
         android:layout_height="wrap_content"
@@ -28,8 +36,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="softinus (Mark Choi)"
-        android:layout_marginLeft="75dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="55dp"
         android:textColor="#000000"
         android:textSize="16sp"
         />
@@ -46,6 +54,7 @@
         android:textSize="20sp"
         />
         
+
         <ProgressBar
             android:id="@+id/prg_exp"
             android:layout_width="100dp"
@@ -95,18 +104,73 @@
         android:textSize="14sp"
         />
         
-        <RatingBar
-            android:id="@+id/rtb_entrance_free"
-            android:layout_width="100dp"
-            android:layout_height="50dp"
-            android:layout_below="@+id/txt_label_entrance"
+<!--         <RatingBar -->
+<!--             android:id="@+id/rtb_entrance_free" -->
+<!--             android:layout_width="100dp" -->
+<!--             android:layout_height="50dp" -->
+<!--             android:layout_below="@+id/txt_label_entrance" -->
+<!--             android:layout_toRightOf="@+id/txt_label_entrance_free" -->
+<!--             android:layout_marginTop="10dp" -->
+<!--             android:layout_marginLeft="10dp" -->
+<!--             android:numStars="5" -->
+<!--             android:rating="4" -->
+<!--             android:isIndicator="true" -->
+<!--             android:scaleX="0.2" -->
+<!--             android:scaleY="0.2"/> -->
+        
+            <ImageView
+            android:id="@+id/p1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+			android:layout_below="@+id/txt_label_entrance"
             android:layout_toRightOf="@+id/txt_label_entrance_free"
             android:layout_marginTop="10dp"
             android:layout_marginLeft="10dp"
-            android:numStars="5"
-            android:rating="4"
-            android:isIndicator="true"
-            android:scaleX="0.2"
-            android:scaleY="0.2"/>
+            android:src="@drawable/button_pencil"
+            />
+            
+            <ImageView
+            android:id="@+id/p2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+			android:layout_below="@+id/txt_label_entrance"
+            android:layout_toRightOf="@+id/p1"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/button_pencil"
+            />
+            
+            <ImageView
+            android:id="@+id/p3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+			android:layout_below="@+id/txt_label_entrance"
+            android:layout_toRightOf="@+id/p2"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/button_pencil"
+            />
+            
+            <ImageView
+            android:id="@+id/p4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+			android:layout_below="@+id/txt_label_entrance"
+            android:layout_toRightOf="@+id/p3"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/button_pencil"
+            />
+            
+            <ImageView
+            android:id="@+id/p5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+			android:layout_below="@+id/txt_label_entrance"
+            android:layout_toRightOf="@+id/p4"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/button_pencil"
+            />
 
 </RelativeLayout>

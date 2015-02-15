@@ -16,7 +16,8 @@
         android:layout_height="wrap_content"
         android:layout_toRightOf="@+id/vertical_line"
         android:layout_centerHorizontal="true"
-        android:src="@drawable/horizontal_line"/>
+        android:layout_marginLeft="-5dp"
+        android:src="@drawable/landscape_line_right"/>
         
     <TextView 
         android:id="@+id/txt_content"
