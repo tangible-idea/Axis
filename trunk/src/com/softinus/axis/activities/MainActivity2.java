@@ -13,23 +13,25 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.ToggleButton;
 
 import com.softinus.axis.data.QuestionData;
 import com.softinus.axis.data.QuestionStorage;
 import com.softinus.axis.fragments.FragmentHistory;
 import com.softinus.axis.fragments.FragmentMarket;
-import com.softinus.axis.fragments.FragmentSelectQuestion;
-import com.softinus.axis.fragments.FragmentStudy;
 import com.softinus.axis.fragments.FragmentQuestionCollection;
-import com.softinus.axis.fragments.FragmentQuestionSingle;
-import com.softinus.axis.util.SPUtil;
+import com.softinus.axis.fragments.FragmentSelectCollection;
+import com.softinus.axis.fragments.FragmentSelectQuestion;
 
 public class MainActivity2 extends BaseAxisAcivity implements OnClickListener
 {
 	private Button BTN_more, BTN_market, BTN_record, BTN_study;
 	private ToggleButton BTN_study_sub1, BTN_study_sub2, BTN_study_sub3;
 	private ToggleButton BTN_market_sub1, BTN_market_sub2;
+	
+	private Button BTN_yearup, BTN_yeardown;
+	private TextView TXT_year;
 	
 	private ImageView IMG_sub;
 
@@ -51,7 +53,9 @@ public class MainActivity2 extends BaseAxisAcivity implements OnClickListener
 		BTN_market_sub1= (ToggleButton) findViewById(R.id.btn_market_sub1);
 		BTN_market_sub2= (ToggleButton) findViewById(R.id.btn_market_sub2);
 		
-		
+		BTN_yearup= (Button) findViewById(R.id.btn_year_up);
+		BTN_yeardown= (Button) findViewById(R.id.btn_year_down);
+		TXT_year= (TextView) findViewById(R.id.txt_history_year);
 		
 		BTN_more.setOnClickListener(this);
 		BTN_market.setOnClickListener(this);
@@ -90,7 +94,31 @@ public class MainActivity2 extends BaseAxisAcivity implements OnClickListener
 	        QuestionStorage.arrQList.add(new QuestionData(14, new Date(), "hello", 3, 120, "3x3", "3x3", "9", "", ""));
 	        QuestionStorage.arrQList.add(new QuestionData(15, new Date(), "hello", 3, 120, "4x4", "4x4", "16", "", ""));
 	        
-	       
+			BTN_market.setBackgroundResource(R.drawable.market_off);
+			BTN_study.setBackgroundResource(R.drawable.study_on);
+			BTN_record.setBackgroundResource(R.drawable.recode_off);
+			
+			BTN_study_sub1.setVisibility(View.VISIBLE);
+			BTN_study_sub2.setVisibility(View.VISIBLE);
+			BTN_study_sub3.setVisibility(View.VISIBLE);
+			
+			BTN_market_sub1.setVisibility(View.GONE);
+			BTN_market_sub2.setVisibility(View.GONE);
+			
+			BTN_yearup.setVisibility(View.GONE);
+			BTN_yeardown.setVisibility(View.GONE);
+			TXT_year.setVisibility(View.GONE);
+			
+			BTN_study_sub1.setChecked(true);
+			BTN_study_sub2.setChecked(false);
+			BTN_study_sub3.setChecked(false);
+			
+			Fragment fr;
+			fr= new FragmentSelectQuestion();
+			FragmentManager fm = getFragmentManager();
+			FragmentTransaction fragmentTransaction = fm.beginTransaction();
+			fragmentTransaction.replace(R.id.fragment_place, fr);
+			fragmentTransaction.commit();
 		}
 	}
 
@@ -126,12 +154,20 @@ public class MainActivity2 extends BaseAxisAcivity implements OnClickListener
 		}
 		else if(v.getId() == R.id.btn_market)
 		{
+			BTN_market.setBackgroundResource(R.drawable.market_on);
+			BTN_study.setBackgroundResource(R.drawable.study_off);
+			BTN_record.setBackgroundResource(R.drawable.recode_off);
+			
 			BTN_study_sub1.setVisibility(View.GONE);
 			BTN_study_sub2.setVisibility(View.GONE);
 			BTN_study_sub3.setVisibility(View.GONE);
 			
 			BTN_market_sub1.setVisibility(View.VISIBLE);
 			BTN_market_sub2.setVisibility(View.VISIBLE);
+			
+			BTN_yearup.setVisibility(View.GONE);
+			BTN_yeardown.setVisibility(View.GONE);
+			TXT_year.setVisibility(View.GONE);
 			
 			Fragment fr;
 			fr= new FragmentMarket();
@@ -143,12 +179,20 @@ public class MainActivity2 extends BaseAxisAcivity implements OnClickListener
 		}
 		else if(v.getId() == R.id.btn_study)
 		{
+			BTN_market.setBackgroundResource(R.drawable.market_off);
+			BTN_study.setBackgroundResource(R.drawable.study_on);
+			BTN_record.setBackgroundResource(R.drawable.recode_off);
+			
 			BTN_study_sub1.setVisibility(View.VISIBLE);
 			BTN_study_sub2.setVisibility(View.VISIBLE);
 			BTN_study_sub3.setVisibility(View.VISIBLE);
 			
 			BTN_market_sub1.setVisibility(View.GONE);
 			BTN_market_sub2.setVisibility(View.GONE);
+			
+			BTN_yearup.setVisibility(View.GONE);
+			BTN_yeardown.setVisibility(View.GONE);
+			TXT_year.setVisibility(View.GONE);
 			
 			BTN_study_sub1.setChecked(true);
 			BTN_study_sub2.setChecked(false);
@@ -165,12 +209,20 @@ public class MainActivity2 extends BaseAxisAcivity implements OnClickListener
 		}
 		else if(v.getId() == R.id.btn_record)
 		{
+			BTN_market.setBackgroundResource(R.drawable.market_off);
+			BTN_study.setBackgroundResource(R.drawable.study_off);
+			BTN_record.setBackgroundResource(R.drawable.recode_on);
+			
 			BTN_study_sub1.setVisibility(View.GONE);
 			BTN_study_sub2.setVisibility(View.GONE);
 			BTN_study_sub3.setVisibility(View.GONE);
 			
 			BTN_market_sub1.setVisibility(View.GONE);
 			BTN_market_sub2.setVisibility(View.GONE);
+			
+			BTN_yearup.setVisibility(View.VISIBLE);
+			BTN_yeardown.setVisibility(View.VISIBLE);
+			TXT_year.setVisibility(View.VISIBLE);
 			
 			Fragment fr;
 			fr= new FragmentHistory();
@@ -200,7 +252,7 @@ public class MainActivity2 extends BaseAxisAcivity implements OnClickListener
 			BTN_study_sub3.setChecked(false);
 			
 			Fragment fr;
-			fr= new FragmentQuestionCollection();
+			fr= new FragmentSelectCollection();
 			FragmentManager fm = getFragmentManager();
 			FragmentTransaction fragmentTransaction = fm.beginTransaction();
 			fragmentTransaction.replace(R.id.fragment_place, fr);

@@ -156,6 +156,7 @@ public class FragmentSelectQuestion extends Fragment
 				            public void onClick(DialogInterface dialog, int whichButton)
 				            {
 				            	Global.s_nCurrQuestion= data.nCode;	 // 현재 풀고 있는 번호 넘기고 문제 푸는 페이지로 넘김.
+				            	Global.s_nPencilCount--;	// 연필 하나 깍음.
 				            	
 				    			Fragment fr;
 				    			fr= new FragmentQuestionSingle();

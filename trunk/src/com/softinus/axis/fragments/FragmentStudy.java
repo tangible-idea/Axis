@@ -20,5 +20,4 @@ public class FragmentStudy extends Fragment
 	
 		return inflater.inflate(R.layout.fragment_study, container, false);
 	}
-	
 }

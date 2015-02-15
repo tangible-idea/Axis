@@ -1,8 +1,5 @@
 package com.softinus.axis.fragments;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.FragmentManager;
