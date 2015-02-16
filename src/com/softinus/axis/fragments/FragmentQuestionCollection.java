@@ -41,6 +41,13 @@ public class FragmentQuestionCollection extends Fragment
 		EDT_answer= (EditText)rootView.findViewById(R.id.edt_answer);
 		BTN_submit= (Button)rootView.findViewById(R.id.btn_submit);
 		
+		
+		if(Global.s_arrCollectionList.isEmpty())
+		{
+			ShowAlertDialog("문제 부족", "문제 모음을 풀기 위해서 문제를 구매하셔야 합니다.", "확인");
+			return rootView;
+		}
+		
 		final QuestionData currQ = FindNextQuestion(Global.s_arrCollectionList.get(nCount));
 		TXT_question.setText(currQ.strText);
 		
